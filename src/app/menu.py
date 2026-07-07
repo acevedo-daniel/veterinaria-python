@@ -1,5 +1,10 @@
-from src.compartido.formato import mostrar_titulo
-from src.compartido.validacion import leer_opcion
+from src.app.datos import propietarios
+from src.features.propietario.presentacion import (
+    mostrar_propietarios,
+    registrar_propietario,
+)
+from src.shared.formato import mostrar_titulo
+from src.shared.validacion import leer_opcion
 
 
 OPCIONES_MENU = [
@@ -33,8 +38,12 @@ def ejecutar_menu() -> None:
         mostrar_menu("Veterinaria", OPCIONES_MENU)
         opcion = leer_opcion("Seleccione una opcion: ", opciones_validas)
 
-        if opcion == "0":
+        if opcion == "1":
+            registrar_propietario(propietarios)
+        elif opcion == "3":
+            mostrar_propietarios(propietarios)
+        elif opcion == "0":
             print("Programa finalizado correctamente.")
             break
-
-        print("La funcionalidad todavia no fue implementada.")
+        else:
+            print("La funcionalidad todavia no fue implementada.")

@@ -1,4 +1,4 @@
-from src.aplicacion.menu import ejecutar_menu
+from src.app.menu import ejecutar_menu
 
 
 if __name__ == "__main__":
