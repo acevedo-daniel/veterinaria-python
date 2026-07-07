@@ -1,0 +1,4 @@
+propietarios = []
+mascotas = []
+turnos = []
+atenciones = []

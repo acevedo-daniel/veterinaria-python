@@ -1,5 +1,5 @@
-from src.app.menu import run_menu
+from src.aplicacion.menu import ejecutar_menu
 
 
 if __name__ == "__main__":
-    run_menu()
+    ejecutar_menu()
