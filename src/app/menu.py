@@ -1,14 +1,24 @@
-from src.app.datos import (propietarios, mascotas)
+from src.app.datos import (propietarios, mascotas, turnos)
 from src.features.propietario.presentacion import (
     mostrar_propietarios,
     registrar_propietario,
 )
-from src.features.mascotas.presentacion import (
+from src.features.mascota.presentacion import (
     registrar_mascota,
     mostrar_mascotas,
     consultar_mascota
 )
-from src.shared.formato import mostrar_opciones, mostrar_titulo
+from src.features.turno.presentacion import (
+    asignar_turno,
+    mostrar_turnos,
+    cancelar_turno
+)
+from src.shared.formato import (
+    mostrar_info,
+    mostrar_opciones,
+    mostrar_separador,
+    mostrar_titulo,
+)
 from src.shared.validacion import leer_opcion
 
 
@@ -30,7 +40,7 @@ OPCIONES_MENU = [
 def mostrar_menu(titulo: str, opciones: list[str]) -> None:
     mostrar_titulo(titulo)
     mostrar_opciones(opciones)
-    print("0. Salir")
+    mostrar_info("0. Salir")
 
 
 def ejecutar_menu() -> None:
@@ -50,8 +60,24 @@ def ejecutar_menu() -> None:
             mostrar_mascotas(mascotas, propietarios)
         elif opcion == "5":
             consultar_mascota(mascotas, propietarios)
+        elif opcion == "6":
+            asignar_turno(propietarios, mascotas, turnos)
+        elif opcion == "7":
+            mostrar_turnos(turnos, mascotas)
+        elif opcion == "8":
+            mostrar_info("La funcionalidad todavia no fue implementada.")
+            mostrar_separador()
+        elif opcion == "9":
+            cancelar_turno(turnos, mascotas)
+        elif opcion == "10":
+            mostrar_info("La funcionalidad todavia no fue implementada.")
+            mostrar_separador()
+        elif opcion == "11":
+            mostrar_info("La funcionalidad todavia no fue implementada.")
+            mostrar_separador()
         elif opcion == "0":
-            print("Programa finalizado correctamente.")
+            mostrar_info("Programa finalizado correctamente.")
             break
         else:
-            print("La funcionalidad todavia no fue implementada.")
+            mostrar_info("La funcionalidad todavia no fue implementada.")
+            mostrar_separador()

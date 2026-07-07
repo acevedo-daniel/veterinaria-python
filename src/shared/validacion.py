@@ -1,3 +1,8 @@
+from datetime import datetime
+
+from src.shared.formato import mostrar_error
+
+
 def leer_opcion(mensaje: str, opciones: list[str]) -> str:
     while True:
         opcion = input(mensaje).strip()
@@ -5,7 +10,7 @@ def leer_opcion(mensaje: str, opciones: list[str]) -> str:
         if opcion in opciones:
             return opcion
 
-        print(f"Ingrese una opcion valida: {', '.join(opciones)}")
+        mostrar_error(f"Ingrese una opcion valida: {', '.join(opciones)}")
 
 
 def leer_texto(mensaje: str) -> str:
@@ -15,7 +20,7 @@ def leer_texto(mensaje: str) -> str:
         if texto:
             return texto
 
-        print("Error: el campo no puede quedar vacio.")
+        mostrar_error("El campo no puede quedar vacio.")
 
 
 def leer_numero(mensaje: str) -> str:
@@ -25,7 +30,8 @@ def leer_numero(mensaje: str) -> str:
         if texto.isdigit():
             return texto
 
-        print("Error: debe ingresar solamente numeros.")
+        mostrar_error("Debe ingresar solamente numeros.")
+
 
 def leer_numero_negativo(mensaje: str) -> int:
     while True:
@@ -34,4 +40,46 @@ def leer_numero_negativo(mensaje: str) -> int:
         if texto.isdigit() and int(texto) >= 0:
             return int(texto)
 
-        print("Error: debe ingresar un numero positivo o cero.")
+        mostrar_error("Debe ingresar un numero positivo o cero.")
+
+
+def leer_fecha(mensaje: str) -> str:
+    while True:
+        fecha_texto = input(mensaje).strip()
+
+        try:
+            fecha = datetime.strptime(fecha_texto, "%d/%m/%Y")
+
+            if fecha.date() < datetime.now().date():
+                mostrar_error("La fecha no puede ser anterior a hoy.")
+                continue
+
+            return fecha_texto
+        except ValueError:
+            mostrar_error("El formato de fecha debe ser dd/mm/yyyy.")
+
+
+def leer_hora(mensaje: str) -> str:
+    while True:
+        hora_texto = input(mensaje).strip()
+
+        try:
+            hora = datetime.strptime(hora_texto, "%H:%M")
+
+            if hora.hour < 8 or hora.hour >= 20:
+                mostrar_error("La hora debe estar entre 08:00 y 20:00.")
+                continue
+
+            return hora_texto
+        except ValueError:
+            mostrar_error("El formato de hora debe ser HH:MM (24 horas).")
+
+
+def confirmar(mensaje: str) -> bool:
+    while True:
+        respuesta = input(f"{mensaje} (s/n): ").strip().lower()
+
+        if respuesta in ["s", "n"]:
+            return respuesta == "s"
+
+        mostrar_error("Debe ingresar 's' para si o 'n' para no.")
