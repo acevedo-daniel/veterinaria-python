@@ -1,4 +1,4 @@
-def buscar_por_id(id_buscado: int, registros: list[dict]) -> dict | None:
+def buscar_por_id(registros: list[dict], id_buscado: int) -> dict | None:
     for registro in registros:
         if registro["id"] == id_buscado:
             return registro

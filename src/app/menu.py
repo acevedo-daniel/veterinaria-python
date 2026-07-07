@@ -1,9 +1,14 @@
-from src.app.datos import propietarios
+from src.app.datos import (propietarios, mascotas)
 from src.features.propietario.presentacion import (
     mostrar_propietarios,
     registrar_propietario,
 )
-from src.shared.formato import mostrar_titulo
+from src.features.mascotas.presentacion import (
+    registrar_mascota,
+    mostrar_mascotas,
+    consultar_mascota
+)
+from src.shared.formato import mostrar_opciones, mostrar_titulo
 from src.shared.validacion import leer_opcion
 
 
@@ -24,10 +29,7 @@ OPCIONES_MENU = [
 
 def mostrar_menu(titulo: str, opciones: list[str]) -> None:
     mostrar_titulo(titulo)
-
-    for indice, opcion in enumerate(opciones, start=1):
-        print(f"{indice}. {opcion}")
-
+    mostrar_opciones(opciones)
     print("0. Salir")
 
 
@@ -40,8 +42,14 @@ def ejecutar_menu() -> None:
 
         if opcion == "1":
             registrar_propietario(propietarios)
+        elif opcion == "2":
+            registrar_mascota(propietarios, mascotas)
         elif opcion == "3":
             mostrar_propietarios(propietarios)
+        elif opcion == "4":
+            mostrar_mascotas(mascotas, propietarios)
+        elif opcion == "5":
+            consultar_mascota(mascotas, propietarios)
         elif opcion == "0":
             print("Programa finalizado correctamente.")
             break

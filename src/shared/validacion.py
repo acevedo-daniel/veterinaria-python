@@ -26,3 +26,12 @@ def leer_numero(mensaje: str) -> str:
             return texto
 
         print("Error: debe ingresar solamente numeros.")
+
+def leer_numero_negativo(mensaje: str) -> int:
+    while True:
+        texto = input(mensaje).strip()
+
+        if texto.isdigit() and int(texto) >= 0:
+            return int(texto)
+
+        print("Error: debe ingresar un numero positivo o cero.")
