@@ -85,7 +85,7 @@ def mostrar_mascotas(mascotas: list[dict], propietarios: list[dict]) -> None:
                 f"Nombre: {mascota['nombre']}, "
                 f"Especie: {mascota['especie']}, "
                 f"Raza: {mascota['raza']}, "
-                f"Edad: {mascota['edad']} anios, "
+                f"Edad: {mascota['edad']} años, "
                 f"Propietario: {nombre_propietario}"
             )
 
@@ -115,7 +115,7 @@ def consultar_mascota(mascotas: list[dict], propietarios: list[dict]) -> None:
             f"Nombre: {mascota['nombre']}, "
             f"Especie: {mascota['especie']}, "
             f"Raza: {mascota['raza']}, "
-            f"Edad: {mascota['edad']} anios, "
+            f"Edad: {mascota['edad']} años, "
             f"Propietario: {nombre_propietario}"
         )
 
