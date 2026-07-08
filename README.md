@@ -1,5 +1,9 @@
 # Sistema de Gestión Veterinaria
 
+Link de la carpeta: https://drive.google.com/drive/folders/1iwvvc8q9XyfEGvYZsAd6zjsIuJ48F33y?usp=drive_link
+
+A continuación se adjunta el enlace al archivo README del proyecto, donde se presenta la descripción general del sistema, sus funcionalidades, estructura interna, forma de ejecución, decisiones de diseño y estado actual del desarrollo.
+
 <div align="center">
 
 # Trabajo Final Integrador
@@ -11,15 +15,15 @@ servicios veterinarios, atenciones, historial clínico, vacunas, controles, aler
 
 ---
 
-**Institución:** ..................................................
+**Institución:** UTN - FRRe
 
-**Materia:** ......................................................
+**Materia:** AED - Algoritmos y Estructuras Discretas
 
-**Docente:** ......................................................
+**Docente:** Sin profesores asignados
 
-**Curso / Comisión:** ..............................................
+**Curso / Comisión:** ISI D - K 1.4
 
-**Fecha de entrega:** ..............................................
+**Fecha de entrega:** 08/07/2026
 
 ---
 
@@ -27,10 +31,10 @@ servicios veterinarios, atenciones, historial clínico, vacunas, controles, aler
 
 | Apellido y nombre | Rol / observaciones |
 | --- | --- |
-| .................................................. | .................................................. |
-| .................................................. | .................................................. |
-| .................................................. | .................................................. |
-| .................................................. | .................................................. |
+| Villalba Lionel Agustín - Legajo: 31306 | Desarrollo colaborativo del sistema. Participación reflejada en commits del proyecto. |
+| Ojeda Fernando Germán - Legajo: 25494 | Desarrollo colaborativo del sistema. Participación reflejada en commits del proyecto. |
+| Acevedo Mario Daniel - Legajo: 31126 | Desarrollo colaborativo del sistema. Participación reflejada en commits del proyecto. |
+| Sandoval Ariadna - Legajo: 31053 | Desarrollo colaborativo del sistema. Participación reflejada en commits del proyecto. |
 
 </div>
 
