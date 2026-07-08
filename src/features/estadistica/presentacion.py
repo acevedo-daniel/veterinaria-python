@@ -1,5 +1,5 @@
-from shared.formato import mostrar_titulo
-from features.estadistica.servicio import (
+from src.shared.formato import mostrar_titulo
+from src.features.estadistica.servicio import (
     contar_turnos_por_estado,
     contar_mascotas_por_especie,
     calcular_total_recaudado,
