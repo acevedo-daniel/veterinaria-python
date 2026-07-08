@@ -18,7 +18,7 @@ from src.features.propietario.presentacion import mostrar_propietarios
 from src.features.mascota.servicio import buscar_mascota, crear_mascota
 
 
-def registrar_mascota(propietarios: list, mascotas: list) -> None:
+def registrar_mascota(propietarios: list[dict], mascotas: list[dict]) -> None:
     mostrar_titulo("Registrar Mascota")
 
     if not propietarios:
@@ -69,7 +69,7 @@ def registrar_mascota(propietarios: list, mascotas: list) -> None:
     mostrar_separador()
 
 
-def mostrar_mascotas(mascotas: list, propietarios: list) -> None:
+def mostrar_mascotas(mascotas: list[dict], propietarios: list[dict]) -> None:
     mostrar_titulo("Lista de Mascotas")
 
     if not mascotas:
@@ -77,7 +77,9 @@ def mostrar_mascotas(mascotas: list, propietarios: list) -> None:
     else:
         for mascota in mascotas:
             propietario = buscar_por_id(propietarios, mascota["id_propetario"])
-            nombre_propietario = propietario["nombre"] if propietario else "Desconocido"
+            nombre_propietario = "Desconocido"
+            if propietario:
+                nombre_propietario = propietario["nombre"]
             mostrar_info(
                 f"ID: {mascota['id']}, "
                 f"Nombre: {mascota['nombre']}, "
@@ -90,7 +92,7 @@ def mostrar_mascotas(mascotas: list, propietarios: list) -> None:
     mostrar_separador()
 
 
-def consultar_mascota(mascotas: list, propietarios: list) -> None:
+def consultar_mascota(mascotas: list[dict], propietarios: list[dict]) -> None:
     mostrar_titulo("Consultar Mascota")
 
     if not mascotas:
@@ -105,7 +107,9 @@ def consultar_mascota(mascotas: list, propietarios: list) -> None:
         mostrar_error(f"No se encontro una mascota con el ID {id_mascota}.")
     else:
         propietario = buscar_por_id(propietarios, mascota["id_propetario"])
-        nombre_propietario = propietario["nombre"] if propietario else "Desconocido"
+        nombre_propietario = "Desconocido"
+        if propietario:
+            nombre_propietario = propietario["nombre"]
         mostrar_info(
             f"ID: {mascota['id']}, "
             f"Nombre: {mascota['nombre']}, "

@@ -20,7 +20,7 @@ from src.features.turno.servicio import (
 )
 
 
-def asignar_turno(propietarios: list, mascotas: list, turnos: list) -> None:
+def asignar_turno(propietarios: list[dict], mascotas: list[dict], turnos: list[dict]) -> None:
     mostrar_titulo("Asignar Turno")
 
     if not mascotas:
@@ -53,7 +53,7 @@ def asignar_turno(propietarios: list, mascotas: list, turnos: list) -> None:
     mostrar_separador()
 
 
-def mostrar_turnos(turnos: list, mascotas: list) -> None:
+def mostrar_turnos(turnos: list[dict], mascotas: list[dict]) -> None:
     mostrar_titulo("Lista de Turnos")
 
     if not turnos:
@@ -80,7 +80,7 @@ def mostrar_turnos(turnos: list, mascotas: list) -> None:
     mostrar_separador()
 
 
-def cancelar_turno(turnos: list, mascotas: list) -> None:
+def cancelar_turno(turnos: list[dict], mascotas: list[dict]) -> None:
     mostrar_titulo("Cancelar Turno")
 
     if not turnos:

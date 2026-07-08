@@ -1,4 +1,4 @@
-from src.app.datos import (propietarios, mascotas, turnos)
+from src.app.datos import (propietarios, mascotas, turnos, atenciones)
 from src.features.propietario.presentacion import (
     mostrar_propietarios,
     registrar_propietario,
@@ -13,6 +13,11 @@ from src.features.turno.presentacion import (
     mostrar_turnos,
     cancelar_turno
 )
+from src.features.atencion.presentacion import (
+    atender_turno,
+    mostrar_atenciones,
+)
+from src.servicios_veterinarios.datos import servicios
 from src.shared.formato import (
     mostrar_info,
     mostrar_opciones,
@@ -65,13 +70,11 @@ def ejecutar_menu() -> None:
         elif opcion == "7":
             mostrar_turnos(turnos, mascotas)
         elif opcion == "8":
-            mostrar_info("La funcionalidad todavia no fue implementada.")
-            mostrar_separador()
+            atender_turno(turnos, mascotas, servicios, atenciones)
         elif opcion == "9":
             cancelar_turno(turnos, mascotas)
         elif opcion == "10":
-            mostrar_info("La funcionalidad todavia no fue implementada.")
-            mostrar_separador()
+            mostrar_atenciones(atenciones, turnos, mascotas, servicios)
         elif opcion == "11":
             mostrar_info("La funcionalidad todavia no fue implementada.")
             mostrar_separador()
