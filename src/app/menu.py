@@ -25,6 +25,7 @@ from src.shared.formato import (
     mostrar_titulo,
 )
 from src.shared.validacion import leer_opcion
+from src.features.estadistica.presentacion import mostrar_estadisticas
 
 
 OPCIONES_MENU = [
@@ -76,8 +77,7 @@ def ejecutar_menu() -> None:
         elif opcion == "10":
             mostrar_atenciones(atenciones, turnos, mascotas, servicios)
         elif opcion == "11":
-            mostrar_info("La funcionalidad todavia no fue implementada.")
-            mostrar_separador()
+            mostrar_estadisticas(turnos, atenciones, mascotas, propietarios)
         elif opcion == "0":
             mostrar_info("Programa finalizado correctamente.")
             break
