@@ -27,6 +27,7 @@ from src.shared.formato import (
 from src.shared.validacion import leer_opcion
 from src.features.estadistica.presentacion import mostrar_estadisticas
 from src.shared.persistencia import guardar_datos
+from src.features.historial.presentacion import consultar_historial_mascota
 
 
 OPCIONES_MENU = [
@@ -41,6 +42,7 @@ OPCIONES_MENU = [
     "Cancelar turno",
     "Mostrar atenciones",
     "Mostrar estadísticas",
+    "Consultar historial clínico",
 ]
 
 
@@ -84,6 +86,8 @@ def ejecutar_menu() -> None:
             mostrar_atenciones(atenciones, turnos, mascotas, servicios)
         elif opcion == "11":
             mostrar_estadisticas(propietarios, mascotas, turnos, atenciones, servicios)
+        elif opcion == "12": 
+            consultar_historial_mascota(propietarios, mascotas, turnos, atenciones, servicios) 
         elif opcion == "0":
             guardar_datos(propietarios, mascotas, turnos, atenciones)
             mostrar_info("Programa finalizado correctamente.")
