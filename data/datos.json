@@ -1,6 +1,34 @@
 {
-    "propietarios": [],
-    "mascotas": [],
+    "propietarios": [
+        {
+            "id": 1,
+            "dni": "48730320",
+            "nombre": "Lionel Villalba",
+            "telefono": "3734521102"
+        }
+    ],
+    "mascotas": [
+        {
+            "id": 1,
+            "nombre": "Coco",
+            "especie": "Perro",
+            "raza": "Bulldog francés",
+            "edad": 7,
+            "id_propetario": 1
+        }
+    ],
     "turnos": [],
-    "atenciones": []
+    "atenciones": [],
+    "seguimientos": [
+        {
+            "id": 1,
+            "id_mascota": 1,
+            "tipo": "Vacuna",
+            "descripcion": "Vacuna antihisopropílica",
+            "fecha_registro": "12/07/2026",
+            "proxima_fecha": "15/07/2026",
+            "observaciones": "Perro intranquilo en la colocación, tener cuidado",
+            "estado": "Pendiente"
+        }
+    ]
 }

@@ -5,9 +5,9 @@ from pathlib import Path
 RUTA_DATOS = Path(__file__).resolve().parents[2] / "data" / "datos.json"
 
 
-def cargar_datos() -> tuple[list, list, list, list]:
+def cargar_datos() -> tuple[list, list, list, list, list]:
     if not RUTA_DATOS.exists():
-        return [], [], [], []
+        return [], [], [], [], []
 
     try:
         with open(RUTA_DATOS, "r", encoding="utf-8") as archivo:
@@ -17,12 +17,13 @@ def cargar_datos() -> tuple[list, list, list, list]:
         mascotas = datos.get("mascotas", [])
         turnos = datos.get("turnos", [])
         atenciones = datos.get("atenciones", [])
+        seguimientos = datos.get("seguimientos", [])
 
-        return propietarios, mascotas, turnos, atenciones
+        return propietarios, mascotas, turnos, atenciones, seguimientos
 
     except json.JSONDecodeError:
         print("Error: el archivo de datos está dañado. Se iniciará con datos vacíos.")
-        return [], [], [], []
+        return [], [], [], [], []
 
 
 def guardar_datos(
@@ -30,6 +31,7 @@ def guardar_datos(
     mascotas: list,
     turnos: list,
     atenciones: list,
+    seguimientos: list,
 ) -> None:
     RUTA_DATOS.parent.mkdir(parents=True, exist_ok=True)
 
@@ -38,6 +40,7 @@ def guardar_datos(
         "mascotas": mascotas,
         "turnos": turnos,
         "atenciones": atenciones,
+        "seguimientos": seguimientos,
     }
 
     with open(RUTA_DATOS, "w", encoding="utf-8") as archivo:
