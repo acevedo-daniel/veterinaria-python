@@ -54,7 +54,7 @@ def registrar_mascota(propietarios: list[dict], mascotas: list[dict]) -> None:
     especie = especies[opcion_especie]
 
     raza = leer_texto("Ingrese la raza de la mascota: ")
-    edad = leer_numero_negativo("Ingrese la edad de la mascota en anios: ")
+    edad = leer_numero_negativo("Ingrese la edad de la mascota en años: ")
 
     mascota = crear_mascota(mascotas, nombre, especie, raza, edad, id_propietario)
 
