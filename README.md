@@ -6,9 +6,8 @@
 
 ## Sistema de Gestión Veterinaria en Python
 
-Aplicación de consola para administrar propietarios, mascotas, turnos,
-servicios veterinarios, atenciones, historial clínico, vacunas, controles,
-alertas y estadísticas.
+Aplicación de consola e interfaz gráfica para administrar propietarios, mascotas, turnos,
+servicios veterinarios, atenciones, historial clínico, vacunas, controles, alertas y estadísticas.
 
 ---
 
@@ -40,9 +39,9 @@ alertas y estadísticas.
 ## Descripción
 
 Este proyecto implementa un sistema básico de gestión para una veterinaria.
-La aplicación se ejecuta desde consola y permite registrar información central
-del negocio: propietarios, mascotas, turnos, servicios disponibles, atenciones,
-historial clínico, vacunas, controles próximos y estadísticas generales.
+La aplicación permite registrar información central del negocio: propietarios,
+mascotas, turnos, servicios disponibles, atenciones, historial clínico, vacunas,
+controles próximos y estadísticas generales.
 
 El objetivo principal del proyecto es practicar programación modular en Python,
 separando responsabilidades entre presentación, lógica de servicio, validaciones,
@@ -81,120 +80,123 @@ El proyecto puede ejecutarse de dos formas: desde consola o mediante interfaz gr
 
 ### Ejecución por consola
 
-- Desde la carpeta raíz del proyecto:
+Desde la carpeta raíz del proyecto:
 
 ```bash
 python main.py
 ```
-## Ejecución con interfaz gráfica
 
- - Desde la carpeta raíz del proyecto:
+### Ejecución con interfaz gráfica
+
+Desde la carpeta raíz del proyecto:
+
 ```bash
 python gui.py
 ```
 
-Requisitos:
+### Requisitos
 
 - Python 3 instalado.
-- Ejecutar el comando desde la raiz del proyecto, donde se encuentra `main.py`.
+- Ejecutar los comandos desde la raíz del proyecto, donde se encuentran `main.py` y `gui.py`.
 - La interfaz gráfica utiliza Tkinter, librería incluida por defecto en Python.
+
 ---
+
 ## Persistencia de datos
 
 El sistema guarda la información cargada en un archivo JSON.
 
 Archivo utilizado:
 
-datos.json
+```text
+data/datos.json
+```
 
 Allí se almacenan los datos de:
 
-Propietarios.
-Mascotas.
-Turnos.
-Atenciones.
-Vacunas y controles próximos.
+- Propietarios.
+- Mascotas.
+- Turnos.
+- Atenciones.
+- Vacunas y controles próximos.
 
 Gracias a esta funcionalidad, la información no se pierde al cerrar el programa.
 Cuando el sistema vuelve a ejecutarse, carga automáticamente los datos guardados.
 
 ---
+
 ## Estructura del proyecto
 
 ```text
 veterinaria-python/
-|-- main.py
-|-- gui.py
-|-- README.md
-|-- datos.json
-    |-- app/
-    |   |-- __init__.py
-    |   |-- datos.py
-    |   |-- menu.py
-    |
-    |-- features/
-    |   |-- propietario/
-    |   |   |-- presentacion.py
-    |   |   |-- servicio.py
-    |   |
-    |   |-- mascota/
-    |   |   |-- presentacion.py
-    |   |   |-- servicio.py
-    |   |
-    |   |-- turno/
-    |   |   |-- presentacion.py
-    |   |   |-- servicio.py
-    |   |
-    |   |-- atencion/
-    |   |   |-- presentacion.py
-    |   |   |-- servicio.py
-    |   |
-    |   |-- estadistica/
-    |   |   |-- presentacion.py
-    |   |   |-- servicio.py
-    |   |
-    |   |-- historial/
-    |   |   |-- presentacion.py
-    |   |
-    |   |-- seguimiento/
-    |       |-- presentacion.py
-    |       |-- servicio.py
-    |
-    |-- servicios_veterinarios/
-    |   |-- datos.py
-    |   |-- presentacion.py
-    |
-    |-- shared/
-        |-- busqueda.py
-        |-- formato.py
-        |-- identificador.py
-        |-- persistencia.py
-        |-- validacion.py
+├── main.py
+├── gui.py
+├── README.md
+├── data/
+│   └── datos.json
+├── docs/
+│   ├── README.md
+│   └── documentacion-tecnica.md
+└── src/
+    ├── app/
+    │   ├── __init__.py
+    │   ├── datos.py
+    │   └── menu.py
+    ├── features/
+    │   ├── propietario/
+    │   │   ├── presentacion.py
+    │   │   └── servicio.py
+    │   ├── mascota/
+    │   │   ├── presentacion.py
+    │   │   └── servicio.py
+    │   ├── turno/
+    │   │   ├── presentacion.py
+    │   │   └── servicio.py
+    │   ├── atencion/
+    │   │   ├── presentacion.py
+    │   │   └── servicio.py
+    │   ├── estadistica/
+    │   │   ├── presentacion.py
+    │   │   └── servicio.py
+    │   ├── historial/
+    │   │   └── presentacion.py
+    │   └── seguimiento/
+    │       ├── presentacion.py
+    │       └── servicio.py
+    ├── servicios_veterinarios/
+    │   ├── datos.py
+    │   └── presentacion.py
+    └── shared/
+        ├── busqueda.py
+        ├── formato.py
+        ├── identificador.py
+        ├── persistencia.py
+        └── validacion.py
 ```
 
 ---
 
-## Organizacion interna
+## Organización interna
 
-El proyecto esta dividido por responsabilidades:
+El proyecto está dividido por responsabilidades:
 
-| Carpeta / archivo                | Responsabilidad                                                 |
-| -------------------------------- | --------------------------------------------------------------- |
-| `main.py`                        | Punto de entrada de la aplicación.                              |
-| `gui.py`                         | Interfaz gráfica del sistema desarrollada con Tkinter.          |
-| `src/app/menu.py`                | Menú principal y navegación entre opciones.                     |
-| `src/app/datos.py`               | Carga inicial de las listas utilizadas por el sistema.          |
-| `src/features/*/presentacion.py` | Entrada y salida por consola de cada funcionalidad.             |
-| `src/features/*/servicio.py`     | Reglas de negocio y operaciones sobre los datos.                |
-| `src/features/estadistica/`      | Cálculo y presentación de estadísticas generales.               |
-| `src/features/historial/`        | Consulta del historial clínico de cada mascota.                 |
-| `src/features/seguimiento/`      | Registro de vacunas, controles y alertas.                       |
-| `src/shared/formato.py`          | Funciones comunes para mostrar títulos, mensajes y separadores. |
-| `src/shared/validacion.py`       | Funciones para validar datos ingresados por el usuario.         |
-| `src/shared/busqueda.py`         | Búsqueda genérica por ID.                                       |
-| `src/shared/identificador.py`    | Generación de IDs incrementales.                                |
-| `src/shared/persistencia.py`     | Carga y guardado de datos en archivo JSON.                      |
-| `src/servicios_veterinarios/`    | Servicios disponibles y su visualización.                       |
+| Carpeta / archivo | Responsabilidad |
+| --- | --- |
+| `main.py` | Punto de entrada de la aplicación por consola. |
+| `gui.py` | Interfaz gráfica del sistema desarrollada con Tkinter. |
+| `src/app/menu.py` | Menú principal y navegación entre opciones. |
+| `src/app/datos.py` | Carga inicial de las listas utilizadas por el sistema. |
+| `src/features/*/presentacion.py` | Entrada y salida por consola de cada funcionalidad. |
+| `src/features/*/servicio.py` | Reglas de negocio y operaciones sobre los datos. |
+| `src/features/estadistica/` | Cálculo y presentación de estadísticas generales. |
+| `src/features/historial/` | Consulta del historial clínico de cada mascota. |
+| `src/features/seguimiento/` | Registro de vacunas, controles y alertas. |
+| `src/shared/formato.py` | Funciones comunes para mostrar títulos, mensajes y separadores. |
+| `src/shared/validacion.py` | Funciones para validar datos ingresados por el usuario. |
+| `src/shared/busqueda.py` | Búsqueda genérica por ID. |
+| `src/shared/identificador.py` | Generación de IDs incrementales. |
+| `src/shared/persistencia.py` | Carga y guardado de datos en archivo JSON. |
+| `src/servicios_veterinarios/` | Servicios disponibles y su visualización. |
 
 ---
 
@@ -214,6 +216,7 @@ Un flujo habitual dentro del sistema es:
 10. Consultar estadísticas generales.
 
 ---
+
 ## Interfaz gráfica
 
 El sistema cuenta con una interfaz gráfica desarrollada con Tkinter.
@@ -234,6 +237,8 @@ Desde la interfaz gráfica se puede:
 
 La interfaz incluye un panel de inicio con tarjetas de resumen, secciones diferenciadas por funcionalidad y tablas para organizar mejor la información cargada.
 
+---
+
 ## Datos que administra el sistema
 
 ### Propietarios
@@ -243,7 +248,7 @@ Cada propietario contiene:
 - ID.
 - DNI.
 - Nombre.
-- Telefono.
+- Teléfono.
 
 ### Mascotas
 
@@ -284,7 +289,7 @@ Cada atención contiene:
 - Observaciones.
 - Importe.
 
-## Vacunas y controles 
+### Vacunas y controles
 
 Cada seguimiento contiene:
 
@@ -299,10 +304,11 @@ Cada seguimiento contiene:
 
 Tipos posibles:
 
-- Vacuna
-- Control
+- Vacuna.
+- Control.
 
 ---
+
 ## Alertas de vacunas y controles
 
 El sistema cuenta con una funcionalidad de alertas para vacunas y controles próximos.
@@ -333,10 +339,11 @@ Esta funcionalidad ayuda a realizar un seguimiento más ordenado de la atención
 - Se mantiene una versión por consola mediante `main.py`.
 - Se incorpora una interfaz gráfica mediante `gui.py`.
 - La interfaz gráfica utiliza Tkinter para evitar dependencias externas.
-- La interfaz gráfica reutiliza los mismos datos persistidos en `datos.json`.
+- La interfaz gráfica reutiliza los mismos datos persistidos en `data/datos.json`.
 - El diseño visual utiliza secciones, pestañas, tablas y tarjetas de resumen para facilitar el uso del sistema.
 
 ---
+
 ## Limitaciones actuales
 
 - No hay sistema de usuarios ni permisos.
@@ -350,15 +357,17 @@ Esta funcionalidad ayuda a realizar un seguimiento más ordenado de la atención
 ## Verificación rápida
 
 Para comprobar que los archivos Python compilan correctamente:
+
 ```bash
 python -m compileall src
 ```
-## Estado del proyecto
 
- Proyecto en desarrollo
+---
+
+## Estado del proyecto
 
 Proyecto en desarrollo.
 
-- Versión actual con funcionamiento por consola e interfaz gráfica, persistencia de datos en JSON, estadísticas, historial clínico, seguimiento de vacunas y controles, y sistema de alertas.
+Versión actual con funcionamiento por consola e interfaz gráfica, persistencia de datos en JSON, estadísticas, historial clínico, seguimiento de vacunas y controles, y sistema de alertas.
 
-- La aplicación permite administrar la información principal de una veterinaria desde consola o desde una interfaz gráfica local desarrollada con Tkinter.
+La aplicación permite administrar la información principal de una veterinaria desde consola o desde una interfaz gráfica local desarrollada con Tkinter.
