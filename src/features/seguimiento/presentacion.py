@@ -10,7 +10,10 @@ from src.shared.formato import (
 )
 from src.shared.validacion import leer_fecha, leer_opcion, leer_numero, leer_texto
 from src.features.mascota.presentacion import mostrar_mascotas
-from src.features.seguimiento.servicio import registrar_seguimiento
+from src.features.seguimiento.servicio import (
+    registrar_seguimiento,
+    obtener_alertas_seguimientos,
+)
 
 
 def registrar_vacuna_o_control(
@@ -79,6 +82,7 @@ def mostrar_seguimientos(
     propietarios: list[dict],
     mascotas: list[dict],
     seguimientos: list[dict],
+    mostrar_si_no_hay: bool = True,
 ) -> None:
     mostrar_titulo("Vacunas y Controles Registrados")
 
@@ -103,6 +107,47 @@ def mostrar_seguimientos(
             f"Próxima fecha: {seguimiento['proxima_fecha']}, "
             f"Estado: {seguimiento['estado']}, "
             f"Observaciones: {seguimiento['observaciones']}"
+        )
+
+    mostrar_separador()
+    
+def mostrar_alertas_seguimientos(
+    mascotas: list[dict],
+    seguimientos: list[dict],
+    mostrar_si_no_hay: bool = True,
+) -> None:
+    alertas = obtener_alertas_seguimientos(seguimientos)
+
+    if not alertas:
+        if mostrar_si_no_hay:
+            mostrar_titulo("Alertas")
+            mostrar_info("No hay vacunas ni controles próximos o vencidos.")
+            mostrar_separador()
+        return
+
+    mostrar_titulo("Alertas de Vacunas y Controles")
+
+    for alerta in alertas:
+        mascota = buscar_por_id(mascotas, alerta["id_mascota"])
+
+        nombre_mascota = "Mascota desconocida"
+        if mascota is not None:
+            nombre_mascota = mascota["nombre"]
+
+        if alerta["estado_alerta"] == "Vencido":
+            mensaje_tiempo = f"Vencido hace {abs(alerta['dias_restantes'])} día/s"
+        elif alerta["estado_alerta"] == "Para hoy":
+            mensaje_tiempo = "Vence hoy"
+        else:
+            mensaje_tiempo = f"Faltan {alerta['dias_restantes']} día/s"
+
+        mostrar_info(
+            f"Mascota: {nombre_mascota} | "
+            f"Tipo: {alerta['tipo']} | "
+            f"Descripción: {alerta['descripcion']} | "
+            f"Próxima fecha: {alerta['proxima_fecha']} | "
+            f"Estado: {alerta['estado_alerta']} | "
+            f"{mensaje_tiempo}"
         )
 
     mostrar_separador()

@@ -31,6 +31,7 @@ from src.features.historial.presentacion import consultar_historial_mascota
 from src.features.seguimiento.presentacion import (
     registrar_vacuna_o_control,
     mostrar_seguimientos,
+    mostrar_alertas_seguimientos, 
 )
 
 
@@ -49,6 +50,7 @@ OPCIONES_MENU = [
     "Consultar historial clínico",
     "Registrar vacuna / control próximo",
     "Mostrar vacunas y controles",
+    "Ver alertas de vacunas y controles",
 ]
 
 
@@ -60,7 +62,8 @@ def mostrar_menu(titulo: str, opciones: list[str]) -> None:
 
 def ejecutar_menu() -> None:
     opciones_validas = [str(numero) for numero in range(len(OPCIONES_MENU) + 1)]
-
+    
+    mostrar_alertas_seguimientos(mascotas, seguimientos, mostrar_si_no_hay=False)
     while True:
         mostrar_menu("Veterinaria", OPCIONES_MENU)
         opcion = leer_opcion("Seleccione una opcion: ", opciones_validas)
@@ -99,6 +102,8 @@ def ejecutar_menu() -> None:
             guardar_datos(propietarios, mascotas, turnos, atenciones, seguimientos)
         elif opcion == "14":
             mostrar_seguimientos(propietarios, mascotas, seguimientos)
+        elif opcion == "15":
+            mostrar_alertas_seguimientos(mascotas, seguimientos, mostrar_si_no_hay=False) 
         elif opcion == "0":
             guardar_datos(propietarios, mascotas, turnos, atenciones, seguimientos)
             mostrar_info("Programa finalizado correctamente.")
