@@ -62,7 +62,7 @@ El sistema cuenta actualmente con las siguientes funcionalidades implementadas:
 - Listado de turnos.
 - Cancelacion de turnos pendientes.
 - Listado de servicios veterinarios disponibles.
-- Atencion de turnos pendientes.
+- Atención de turnos pendientes.
 - Registro de atenciones realizadas.
 - Listado de atenciones.
 
@@ -200,12 +200,12 @@ Estados posibles:
 
 ### Atenciones
 
-Cada atencion contiene:
+Cada atención contiene:
 
 - ID.
 - ID del turno.
 - ID del servicio.
-- Diagnostico.
+- Diagnóstico.
 - Observaciones.
 - Importe.
 

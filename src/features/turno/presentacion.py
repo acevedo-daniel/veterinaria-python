@@ -34,7 +34,7 @@ def asignar_turno(propietarios: list[dict], mascotas: list[dict], turnos: list[d
     mascota = buscar_por_id(mascotas, id_mascota)
 
     if not mascota:
-        mostrar_error("No se encontro una mascota con ese ID.")
+        mostrar_error("No se encontró una mascota con ese ID.")
         mostrar_separador()
         return
 
@@ -65,7 +65,7 @@ def mostrar_turnos(turnos: list[dict], mascotas: list[dict]) -> None:
         mascota = buscar_por_id(mascotas, turno["id_mascota"])
 
         if mascota is None:
-            mostrar_error(f"No se encontro la mascota con ID {turno['id_mascota']}.")
+            mostrar_error(f"No se encontró la mascota con ID {turno['id_mascota']}.")
             continue
 
         mostrar_info(
@@ -92,7 +92,7 @@ def cancelar_turno(turnos: list[dict], mascotas: list[dict]) -> None:
         mascota = buscar_por_id(mascotas, turno["id_mascota"])
 
         if mascota is None:
-            mostrar_error(f"No se encontro la mascota con ID {turno['id_mascota']}.")
+            mostrar_error(f"No se encontró la mascota con ID {turno['id_mascota']}.")
             continue
 
         mostrar_info(
@@ -108,7 +108,7 @@ def cancelar_turno(turnos: list[dict], mascotas: list[dict]) -> None:
     turno_a_cancelar = buscar_por_id(turnos, id_turno)
 
     if turno_a_cancelar is None:
-        mostrar_error("No se encontro un turno con ese ID.")
+        mostrar_error("No se encontró un turno con ese ID.")
         mostrar_separador()
         return
 
@@ -118,6 +118,6 @@ def cancelar_turno(turnos: list[dict], mascotas: list[dict]) -> None:
         else:
             mostrar_error("No se puede cancelar un turno que no esta pendiente.")
     else:
-        mostrar_info("Operacion cancelada.")
+        mostrar_info("Operación cancelada.")
 
     mostrar_separador()

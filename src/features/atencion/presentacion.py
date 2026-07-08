@@ -31,7 +31,7 @@ def atender_turno(
     turno = buscar_por_id(turnos, id_turno)
 
     if not turno:
-        mostrar_error("No se encontro un turno con ese ID.")
+        mostrar_error("No se encontró un turno con ese ID.")
         mostrar_separador()
         return
 
@@ -46,11 +46,11 @@ def atender_turno(
     servicio = buscar_por_id(servicios, id_servicio)
 
     if not servicio:
-        mostrar_error("No se encontro un servicio con ese ID.")
+        mostrar_error("No se encontró un servicio con ese ID.")
         mostrar_separador()
         return
 
-    diagnostico = leer_texto("Ingrese el diagnostico: ")
+    diagnostico = leer_texto("Ingrese el diagnóstico: ")
     observaciones = leer_texto("Ingrese las observaciones: ")
 
     atencion = registrar_atencion(
@@ -62,10 +62,10 @@ def atender_turno(
     )
 
     if atencion:
-        mostrar_exito(f"Atencion registrada con ID {atencion['id']}.")
+        mostrar_exito(f"Atención registrada con ID {atencion['id']}.")
         mostrar_info(f"Importe a pagar: ${atencion['importe']}")
     else:
-        mostrar_error("No se pudo registrar la atencion.")
+        mostrar_error("No se pudo registrar la atención.")
 
     mostrar_separador()
 

@@ -39,7 +39,7 @@ OPCIONES_MENU = [
     "Atender turno",
     "Cancelar turno",
     "Mostrar atenciones",
-    "Mostrar estadisticas",
+    "Mostrar estadísticas",
 ]
 
 

@@ -32,7 +32,7 @@ def registrar_mascota(propietarios: list[dict], mascotas: list[dict]) -> None:
     propietario = buscar_por_id(propietarios, id_propietario)
 
     if not propietario:
-        mostrar_error(f"No se encontro un propietario con el ID {id_propietario}.")
+        mostrar_error(f"No se encontró un propietario con el ID {id_propietario}.")
         mostrar_separador()
         return
 
@@ -104,7 +104,7 @@ def consultar_mascota(mascotas: list[dict], propietarios: list[dict]) -> None:
     mascota = buscar_por_id(mascotas, id_mascota)
 
     if not mascota:
-        mostrar_error(f"No se encontro una mascota con el ID {id_mascota}.")
+        mostrar_error(f"No se encontró una mascota con el ID {id_mascota}.")
     else:
         propietario = buscar_por_id(propietarios, mascota["id_propetario"])
         nombre_propietario = "Desconocido"
