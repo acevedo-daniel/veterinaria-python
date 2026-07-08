@@ -13,6 +13,7 @@ def mostrar_estadisticas(
     mascotas: list,
     turnos: list,
     atenciones: list,
+    servicios: list,
 ) -> None:
     mostrar_titulo("Estadísticas")
 
@@ -20,8 +21,7 @@ def mostrar_estadisticas(
     mascotas_por_especie = contar_mascotas_por_especie(mascotas)
     total = calcular_total_recaudado(atenciones)
     promedio = calcular_promedio_atenciones(atenciones)
-    servicio_frecuente = obtener_servicio_mas_frecuente(atenciones)
-
+    servicio_frecuente = obtener_servicio_mas_frecuente(atenciones, servicios)
     print(f"Propietarios: {len(propietarios)}")
     print(f"Mascotas: {len(mascotas)}")
     print(f"Turnos: {len(turnos)}")

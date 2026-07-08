@@ -77,7 +77,7 @@ def ejecutar_menu() -> None:
         elif opcion == "10":
             mostrar_atenciones(atenciones, turnos, mascotas, servicios)
         elif opcion == "11":
-            mostrar_estadisticas(turnos, atenciones, mascotas, propietarios)
+            mostrar_estadisticas(propietarios, mascotas, turnos, atenciones, servicios)
         elif opcion == "0":
             mostrar_info("Programa finalizado correctamente.")
             break

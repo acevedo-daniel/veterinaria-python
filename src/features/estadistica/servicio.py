@@ -41,22 +41,30 @@ def calcular_promedio_atenciones(atenciones: list) -> float:
     return total / len(atenciones)
 
 
-def obtener_servicio_mas_frecuente(atenciones: list) -> str | None:
+def obtener_servicio_mas_frecuente(atenciones: list, servicios: list) -> str | None:
     if len(atenciones) == 0:
         return None
 
     cantidades = {}
-    for atencion in atenciones:
-        servicio = atencion["servicio"]
-        if servicio in cantidades:
-            cantidades[servicio] += 1
-        else:
-            cantidades[servicio] = 1
 
-    servicio_mas_frecuente = None
+    for atencion in atenciones:
+        id_servicio = atencion["id_servicio"]
+
+        if id_servicio in cantidades:
+            cantidades[id_servicio] += 1
+        else:
+            cantidades[id_servicio] = 1
+
+    id_servicio_mas_frecuente = None
     mayor_cantidad = 0
-    for servicio, cantidad in cantidades.items():
+
+    for id_servicio, cantidad in cantidades.items():
         if cantidad > mayor_cantidad:
             mayor_cantidad = cantidad
-            servicio_mas_frecuente = servicio
-    return servicio_mas_frecuente
+            id_servicio_mas_frecuente = id_servicio
+
+    for servicio in servicios:
+        if servicio["id"] == id_servicio_mas_frecuente:
+            return servicio["nombre"]
+
+    return "Servicio desconocido"
