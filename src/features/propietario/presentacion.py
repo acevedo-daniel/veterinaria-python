@@ -9,13 +9,13 @@ from src.shared.formato import (
     mostrar_separador,
     mostrar_titulo,
 )
-from src.shared.validacion import leer_numero, leer_texto
+from src.shared.validacion import leer_numero, leer_texto, leer_dni 
 
 
 def registrar_propietario(propietarios: list[dict]) -> None:
     mostrar_titulo("Registrar Propietario")
 
-    dni = leer_numero("Ingrese el DNI del propietario: ")
+    dni = leer_dni("Ingrese el DNI del propietario (8 dígitos): ")
     nombre = leer_texto("Ingrese el nombre del propietario: ")
     telefono = leer_numero("Ingrese el telefono del propietario: ")
 

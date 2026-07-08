@@ -83,3 +83,14 @@ def confirmar(mensaje: str) -> bool:
             return respuesta == "s"
 
         mostrar_error("Debe ingresar 's' para si o 'n' para no.")
+
+def leer_dni(mensaje: str) -> str:
+    while True:
+        dni = input(mensaje).strip()
+
+        if not dni.isdigit():
+            print("Error: el DNI debe contener solo números.")
+        elif len(dni) != 8:
+            print("Error: el DNI debe tener exactamente 8 dígitos.")
+        else:
+            return dni
